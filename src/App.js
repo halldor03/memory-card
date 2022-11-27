@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Card from "./components/Card";
+import Soundtrack from "./components/Soundtrack";
+import Scoreboard from "./components/Scoreboard";
 import uniqid from "uniqid";
 
 export default function App() {
-  const [currentScore, setCurrentScore] = useState(0);
-  const [bestScore, setBestScore] = useState(0);
-  const [cards, setCards] = useState([
+  const [cards] = useState([
     {
       name: "Chicken",
       imgSrc: "/img/ChickenImg.webp",
@@ -79,32 +79,81 @@ export default function App() {
       id: uniqid(),
     },
   ]);
-  const [soundtrack, setSoundtrack] = useState("Play soundtrack");
-  const playSoundtrack = (e) => {
-    setSoundtrack("Stop Soundtrack");
-    console.log("hi");
-    const sound = new Audio("/sounds/MinecraftSoundtrack.mp3");
-    sound.volume = 0.8;
-    sound.play();
+  const [currentScoreArray, setcurrentScoreArray] = useState([]);
+  const [bestScore, setBestScore] = useState(0);
+
+  //FOR RANDOMIZING CARD ORDER EACH TIME
+  for (let i = cards.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * i);
+    [cards[i], cards[j]] = [cards[j], cards[i]];
+  }
+
+  useEffect(() => {
+    const cardsElements = document.querySelectorAll(".cardElement");
+    const addCardToCurrentScoreArray = (e) => {
+      const mobClicked = e.composedPath()[0].id;
+      const cardClicked = e.composedPath()[0];
+      if (!currentScoreArray.includes(mobClicked)) {
+        cardClicked.classList.add("cardElementValid");
+        setTimeout(() => {
+          cardClicked.classList.remove("cardElementValid");
+        }, 300);
+        setcurrentScoreArray([...currentScoreArray, mobClicked]);
+      } else {
+        playHurtSoundEffect(e);
+        cardClicked.classList.add("cardElementInvalid");
+        setTimeout(() => {
+          cardClicked.classList.remove("cardElementInvalid");
+        }, 300);
+        setBestScore(Math.max(currentScoreArray.length, bestScore));
+        setcurrentScoreArray([]);
+      }
+    };
+
+    //WINNING BEHAVIOUR
+    if (currentScoreArray.length === cards.length) {
+      cardsElements.forEach((card) => {
+        card.classList.add("cardElementInactive");
+      });
+      const winSound = new Audio("/sounds/LevelUpSound.mp3");
+      winSound.volume = 0.6;
+      winSound.play();
+    }
+
+    cardsElements.forEach((card) => {
+      card.addEventListener("click", addCardToCurrentScoreArray);
+    });
+
+    return () => {
+      cardsElements.forEach((card) => {
+        card.removeEventListener("click", addCardToCurrentScoreArray);
+      });
+    };
+  }, [currentScoreArray]);
+
+  const playHurtSoundEffect = (e) => {
+    const hurtSound = new Audio("/sounds/HurtSound.mp3");
+    hurtSound.volume = 0.6;
+    hurtSound.play();
+    e.stopPropagation();
   };
-  // console.log(cards);
+
   return (
     <>
       <header>
         <div className="mainTitle">Minecraft memory game</div>
-        <div className="scoreBoard">
-          <div className="currentScore">Current score: {currentScore}</div>
-          <div className="bestScore">Best score: {bestScore}</div>
-        </div>
+        <Scoreboard
+          currentScoreArray={currentScoreArray}
+          bestScore={bestScore}
+        />
       </header>
       <div className="gameInfoContainer">
         <div className="gameInfo">
-          Get points by clicking on an image but don't click on any more than
-          once! Score all 12 to win!
+          {currentScoreArray.length === cards.length
+            ? "You won! Refresh the page to play again!"
+            : `Get points by clicking on an image but don't click on any more than once! Score all 12 to win!`}
         </div>
-        <button className="soundtrackButton" onClick={(e) => playSoundtrack()}>
-          {soundtrack}
-        </button>
+        <Soundtrack />
       </div>
       <div className="cardContainer">
         <Card cards={cards} />

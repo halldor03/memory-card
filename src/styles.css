@@ -93,6 +93,21 @@ header {
   background-color: rgb(255, 255, 255, 0.1);
   cursor: pointer;
   padding: 2rem;
+  transition: border 0.3s linear;
+  user-select: none;
+}
+
+.cardElementValid {
+  border: 1px solid #1992d4;
+}
+
+.cardElementInvalid {
+  border: 1px solid red;
+}
+
+.cardElementInactive {
+  pointer-events: none;
+  opacity: 0.75;
 }
 
 .cardElement:hover {
@@ -102,9 +117,11 @@ header {
 .cardPhoto {
   height: 12rem;
   max-width: 12rem;
+  pointer-events: none;
 }
 
 .cardTitle {
   margin-top: 1rem;
   font-size: 1.5rem;
+  pointer-events: none;
 }
