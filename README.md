@@ -1,4 +1,4 @@
-Memory game made in React. Check it out here: https://halldor03.github.io/memory-card/
+Minecraft themed memory game made in React. Check it out here: https://halldor03.github.io/memory-card/
 
 # Getting Started with Create React App
 
