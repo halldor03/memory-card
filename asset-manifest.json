@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/memory-card/static/css/main.89ba4839.css",
-    "main.js": "/memory-card/static/js/main.d3a11173.js",
+    "main.js": "/memory-card/static/js/main.e35fe78f.js",
     "static/media/MinecraftFont.otf": "/memory-card/static/media/MinecraftFont.82ba08919dc2add9422f.otf",
     "index.html": "/memory-card/index.html",
     "main.89ba4839.css.map": "/memory-card/static/css/main.89ba4839.css.map",
-    "main.d3a11173.js.map": "/memory-card/static/js/main.d3a11173.js.map"
+    "main.e35fe78f.js.map": "/memory-card/static/js/main.e35fe78f.js.map"
   },
   "entrypoints": [
     "static/css/main.89ba4839.css",
-    "static/js/main.d3a11173.js"
+    "static/js/main.e35fe78f.js"
   ]
 }
