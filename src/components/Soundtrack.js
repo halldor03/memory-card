@@ -5,7 +5,7 @@ export default function Soundtrack() {
 
   useEffect(() => {
     const sound = new Audio(
-      "http://halldor03.github.io/memory-card/sounds/MinecraftSoundtrack.mp3"
+      "https://halldor03.github.io/memory-card/sounds/MinecraftSoundtrack.mp3"
     );
     sound.volume = 0.6;
     sound.currentTime = 18.5;

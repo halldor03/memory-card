@@ -8,74 +8,81 @@ export default function App() {
   const [cards] = useState([
     {
       name: "Chicken",
-      imgSrc: "/img/ChickenImg.webp",
-      soundSrc: "/sounds/ChickenSound.oga",
+      imgSrc: "https://halldor03.github.io/memory-card/img/ChickenImg.webp",
+      soundSrc:
+        "https://halldor03.github.io/memory-card/sounds/ChickenSound.oga",
       id: uniqid(),
     },
     {
       name: "Pig",
-      imgSrc: "/img/PigImg.webp",
-      soundSrc: "/sounds/PigSound.ogg",
+      imgSrc: "https://halldor03.github.io/memory-card/img/PigImg.webp",
+      soundSrc: "https://halldor03.github.io/memory-card/sounds/PigSound.ogg",
       id: uniqid(),
     },
     {
       name: "Cow",
-      imgSrc: "/img/CowImg.webp",
-      soundSrc: "/sounds/CowSound.ogg",
+      imgSrc: "https://halldor03.github.io/memory-card/img/CowImg.webp",
+      soundSrc: "https://halldor03.github.io/memory-card/sounds/CowSound.ogg",
       id: uniqid(),
     },
     {
       name: "Skeleton",
-      imgSrc: "/img/SkeletonImg.webp",
-      soundSrc: "/sounds/SkeletonSound.ogg",
+      imgSrc: "https://halldor03.github.io/memory-card/img/SkeletonImg.webp",
+      soundSrc:
+        "https://halldor03.github.io/memory-card/sounds/SkeletonSound.ogg",
       id: uniqid(),
     },
     {
       name: "Creeper",
-      imgSrc: "/img/CreeperImg.webp",
-      soundSrc: "/sounds/CreeperSound.ogg",
+      imgSrc: "https://halldor03.github.io/memory-card/img/CreeperImg.webp",
+      soundSrc:
+        "https://halldor03.github.io/memory-card/sounds/CreeperSound.ogg",
       id: uniqid(),
     },
     {
       name: "Ghast",
-      imgSrc: "/img/GhastImg.webp",
-      soundSrc: "/sounds/GhastSound.ogg",
+      imgSrc: "https://halldor03.github.io/memory-card/img/GhastImg.webp",
+      soundSrc: "https://halldor03.github.io/memory-card/sounds/GhastSound.ogg",
       id: uniqid(),
     },
     {
       name: "Zombie",
-      imgSrc: "/img/ZombieImg.webp",
-      soundSrc: "/sounds/ZombieSound.ogg",
+      imgSrc: "https://halldor03.github.io/memory-card/img/ZombieImg.webp",
+      soundSrc:
+        "https://halldor03.github.io/memory-card/sounds/ZombieSound.ogg",
       id: uniqid(),
     },
     {
       name: "Villager",
-      imgSrc: "/img/VillagerImg.webp",
-      soundSrc: "/sounds/VillagerSound.ogg",
+      imgSrc: "https://halldor03.github.io/memory-card/img/VillagerImg.webp",
+      soundSrc:
+        "https://halldor03.github.io/memory-card/sounds/VillagerSound.ogg",
       id: uniqid(),
     },
     {
       name: "Spider",
-      imgSrc: "/img/SpiderImg.webp",
-      soundSrc: "/sounds/SpiderSound.oga",
+      imgSrc: "https://halldor03.github.io/memory-card/img/SpiderImg.webp",
+      soundSrc:
+        "https://halldor03.github.io/memory-card/sounds/SpiderSound.oga",
       id: uniqid(),
     },
     {
       name: "Sheep",
-      imgSrc: "/img/SheepImg.webp",
-      soundSrc: "/sounds/SheepSound.oga",
+      imgSrc: "https://halldor03.github.io/memory-card/img/SheepImg.webp",
+      soundSrc: "https://halldor03.github.io/memory-card/sounds/SheepSound.oga",
       id: uniqid(),
     },
     {
       name: "Enderman",
-      imgSrc: "/img/EndermanImg.webp",
-      soundSrc: "/sounds/EndermanSound.ogg",
+      imgSrc: "https://halldor03.github.io/memory-card/img/EndermanImg.webp",
+      soundSrc:
+        "https://halldor03.github.io/memory-card/sounds/EndermanSound.ogg",
       id: uniqid(),
     },
     {
       name: "Witch",
-      imgSrc: "/img/WitchImg.webp",
-      soundSrc: "/sounds/WitchSound.ogg",
+      imgSrc: "https://halldor03.github.io/memory-card/img/WitchImg.webp",
+      soundSrc: "https://halldor03.github.io/memory-card/sounds/WitchSound.ogg",
       id: uniqid(),
     },
   ]);
@@ -115,7 +122,9 @@ export default function App() {
       cardsElements.forEach((card) => {
         card.classList.add("cardElementInactive");
       });
-      const winSound = new Audio("/sounds/LevelUpSound.mp3");
+      const winSound = new Audio(
+        "https://halldor03.github.io/memory-card/sounds/LevelUpSound.mp3"
+      );
       winSound.volume = 0.6;
       winSound.play();
     }
@@ -132,7 +141,9 @@ export default function App() {
   }, [currentScoreArray]);
 
   const playHurtSoundEffect = (e) => {
-    const hurtSound = new Audio("/sounds/HurtSound.mp3");
+    const hurtSound = new Audio(
+      "https://halldor03.github.io/memory-card/sounds/HurtSound.mp3"
+    );
     hurtSound.volume = 0.6;
     hurtSound.play();
     e.stopPropagation();
